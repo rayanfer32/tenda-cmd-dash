@@ -19,11 +19,10 @@ def showAdvancedStats():
         
         # bandwidth bar  
         bu = stats[-1]["metrics"]["totalSpeed"]
-        br = round((TOTAL_BW - bu ), 2)
-
-        print(f'BW: {bu} KB|BW Rem: {br} KB')
-        load = round(bu/(TOTAL_BW/100), 2)
-        print(f"Load: {load}%")
+        load = stats[-1]["metrics"]["load"]
+        totalUsedGB = stats[-1]["metrics"]["totalUsedGB"]
+        print(f'Speed: {bu} KBps|Total: {totalUsedGB} GB|Load: {load}%')
+        
         print('█'*int(bu/(TOTAL_BW/MAX_BLOCKS)))
         
         count = 0

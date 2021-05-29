@@ -5,8 +5,7 @@ import urllib
 import base64
 import logging
 import requests
-from config import MAX_BLOCKS, ROUTER_IP, ROUTER_PASS, TOTAL_BW
-from utils import clearScreen , pauseScreen
+from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW
 
 proxies = urllib.request.getproxies()
 session = requests.Session()
@@ -143,12 +142,17 @@ def getAllStatsJson():
 
     # calculated params
     metrics = {}
+    totalSpeed = totalDownKB + totalUpKB
+    totalUsedGB = (totalSentMB + totalRecievedMB)/1024
     metrics["totalDownKB"] = round(totalDownKB, 2)
     metrics["totalUpKB"] = round(totalUpKB, 2)
-    metrics["totalSpeed"] = round((totalDownKB + totalUpKB), 2)
+    metrics["totalSpeed"] = round(totalSpeed, 2)
     metrics["totalSentMB"] = round(totalSentMB, 2)
     metrics["totalRecievedMB"] = round(totalRecievedMB, 2)
- 
+    
+    metrics["load"] = round((totalSpeed)/(TOTAL_BW/100), 2)
+    metrics["totalUsedGB"] = round(totalUsedGB, 2)
+
     jsonResponse.append({"metrics": metrics})
     return jsonResponse
 
