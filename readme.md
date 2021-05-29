@@ -6,6 +6,16 @@
 ### Run On Windows
 `run.bat`
 
+### Make changes in `config.py`
+```python
+ROUTER_IP = '192.168.0.1'
+ROUTER_PASS = "admin"
+TOTAL_BW = 100/8 * 1024  # KBps
+MAX_BLOCKS = 32
+WAIT_BEFORE_UPDATE = 1
+```
+
+
 ### `Api`
 ```python
 import api
