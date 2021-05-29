@@ -2,7 +2,7 @@ import time
 
 from api import getAllStatsJson, getDeviceParamFromIp, getTrafficStatsJson
 from utils import clearScreen
-from config import TOTAL_BW, MAX_BLOCKS
+from config import TOTAL_BW, MAX_BLOCKS, WAIT_BEFORE_UPDATE
 
 def showSimpleStats():
     stats = getTrafficStatsJson("goform/updateIptAccount")
@@ -26,16 +26,18 @@ def showAdvancedStats():
         print(f"Load: {load}%")
         print('█'*int(bu/(TOTAL_BW/MAX_BLOCKS)))
         
+        count = 0
         for device in stats:
             try:
                 name = device["name"]
                 speed = round(device["downKB"] ,0)
                 used = int(device["recievedMB"] )
                 unitLoad = int(speed/(TOTAL_BW/MAX_BLOCKS))                
-                print(f"{name} | {used} MB")
+                count +=1
+                print(f"{count}: {name} | {used} MB")
                 print('█'*unitLoad,f"{speed}KBps")
             except:
                pass
 
-        time.sleep(1)
+        time.sleep(WAIT_BEFORE_UPDATE)
 
