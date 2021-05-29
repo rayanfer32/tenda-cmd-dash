@@ -31,9 +31,7 @@ def showAdvancedStats():
                 name = device["name"]
                 speed = round(device["downKB"] ,0)
                 used = int(device["recievedMB"] )
-                unitLoad = int(speed/(TOTAL_BW/MAX_BLOCKS))
-                # if(unitLoad>0):
-                
+                unitLoad = int(speed/(TOTAL_BW/MAX_BLOCKS))                
                 print(f"{name} | {used} MB")
                 print('█'*unitLoad,f"{speed}KBps")
             except:
