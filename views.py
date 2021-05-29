@@ -40,4 +40,3 @@ def showAdvancedStats():
                pass
 
         time.sleep(WAIT_BEFORE_UPDATE)
-
