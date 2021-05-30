@@ -1,22 +1,20 @@
-import os
 import logging
-import json
-import api
 from views import showAdvancedStats
+from utils import pauseScreen
 
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
 
 def main():
-	while True:
-		# showSimpleStats()
-		showAdvancedStats()
+	# showSimpleStats()
+	try:
+		while True:
+			showAdvancedStats()
+	except Exception as e:
+		print(e)
+		pauseScreen()
 
 if __name__ == "__main__":
 	main()
-	# api.getAllStatsJson()
-	
-	# # save allStats to a file
-	# with open("getAllStats.json", 'w') as f:
-	# 	json.dump(api.getAllStatsJson(), f)
+
 	
 		

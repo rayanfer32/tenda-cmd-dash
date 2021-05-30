@@ -1,6 +1,4 @@
 import json
-from os import stat
-import time
 import urllib
 import base64
 import logging
@@ -134,6 +132,7 @@ def getAllStatsJson():
         device["mac"] = getDeviceParamFromIp(deviceIP, "mac")
         device["jank"] = getDeviceParamFromIp(deviceIP, "jank")
         device["leaseTime"] = getDeviceParamFromIp(deviceIP, "leaseTime")
+        device["totalSpeed"] = device["upKB"] + device["downKB"]
         devicesArr.append(device)
 
         totalDownKB += device["downKB"]

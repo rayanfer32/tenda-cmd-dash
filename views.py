@@ -1,6 +1,6 @@
 import time
 
-from api import getAllStatsJson, getDeviceParamFromIp, getTrafficStatsJson
+from api import getAllStatsJson, getTrafficStatsJson
 from utils import clearScreen
 from config import TOTAL_BW, MAX_BLOCKS, WAIT_BEFORE_UPDATE
 
@@ -25,17 +25,15 @@ def showAdvancedStats():
         
         print('█'*int(bu/(TOTAL_BW/MAX_BLOCKS)))
         
+        # device info
         count = 0
         for device in stats["devices"]:
-            try:
-                name = device["name"]
-                speed = round(device["downKB"] ,0)
-                used = int(device["recievedMB"] )
-                unitLoad = int(speed/(TOTAL_BW/MAX_BLOCKS))                
-                count +=1
-                print(f"{count}: {name} | {used} MB")
-                print('█'*unitLoad,f"{speed}KBps")
-            except:
-               pass
+            name = device["name"]
+            speed = round(device["totalSpeed"] ,0)
+            used = int(device["recievedMB"] )
+            unitLoad = int(speed/(TOTAL_BW/MAX_BLOCKS))                
+            count +=1
+            print(f"{count}: {name} | {used} MB")
+            print('█'*unitLoad,f"{speed} KBps")
 
         time.sleep(WAIT_BEFORE_UPDATE)
