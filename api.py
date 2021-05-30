@@ -115,7 +115,8 @@ def getDeviceParamFromIp(ip, param):
 
 def getAllStatsJson():
     devices = getTrafficStatsJson("goform/updateIptAccount")
-    jsonResponse = []
+    jsonResponse = {}
+    devicesArr = []
     totalDownKB = 0
     totalUpKB = 0
     totalRecievedMB = 0
@@ -133,7 +134,7 @@ def getAllStatsJson():
         device["mac"] = getDeviceParamFromIp(deviceIP, "mac")
         device["jank"] = getDeviceParamFromIp(deviceIP, "jank")
         device["leaseTime"] = getDeviceParamFromIp(deviceIP, "leaseTime")
-        jsonResponse.append(device)
+        devicesArr.append(device)
 
         totalDownKB += device["downKB"]
         totalUpKB += device["upKB"]
@@ -153,7 +154,8 @@ def getAllStatsJson():
     metrics["load"] = round((totalSpeed)/(TOTAL_BW/100), 2)
     metrics["totalUsedGB"] = round(totalUsedGB, 2)
 
-    jsonResponse.append({"metrics": metrics})
+    jsonResponse["devices"] = devicesArr 
+    jsonResponse["metrics"] = metrics
     return jsonResponse
 
 
