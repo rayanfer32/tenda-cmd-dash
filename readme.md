@@ -24,7 +24,7 @@ resp = api.getAllStatsJson()
 print(resp)
 ```
 ### Response
-
+```json
 {
 	"devices":[
 		{
@@ -64,3 +64,4 @@ print(resp)
 		"totalUsedGB":1.02
 	}
 }
+```
