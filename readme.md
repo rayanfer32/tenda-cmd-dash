@@ -24,57 +24,43 @@ resp = api.getAllStatsJson()
 print(resp)
 ```
 ### Response
-```
-[
-  {
-    "ip":"192.168.0.100",
-    "upKB":1.0,
-    "downKB":0.5,
-    "sentMsg":674604.0,
-    "sentMB":69.3,
-    "recievedMsg":2624653.0,
-    "recievedMB":2967.6,
-    "name":"M2003J15SC-RedmiNote",
-    "mac":"2A:52:73:F1:FE:53",
-    "jank":"0",
-    "leaseTime":86320.0
-  },
-  {
-    "ip":"192.168.0.104",
-    "upKB":0.0,
-    "downKB":0.0,
-    "sentMsg":147101.0,
-    "sentMB":103.4,
-    "recievedMsg":218875.0,
-    "recievedMB":246.5,
-    "name":"POCOM2Pro-POCOM2Pro",
-    "mac":"E0:1F:88:23:C4:92",
-    "jank":"0",
-    "leaseTime":78473.0
-  },
-  {
-    "ip":"192.168.0.105",
-    "upKB":0.0,
-    "downKB":0.0,
-    "sentMsg":574971.0,
-    "sentMB":41.3,
-    "recievedMsg":1349381.0,
-    "recievedMB":1347.9,
-    "name":"lg",
-    "mac":"90:00:4E:91:54:5D",
-    "jank":"0",
-    "leaseTime":74266.0
-  },
-  {
-    "metrics":{
-      "totalDownKB":1.4,
-      "totalUpKB":1.0,
-      "totalSpeed":2.4,
-      "totalSentMB":4186.0,
-      "totalRecievedMB":14137.2,
-      "load":0.02,
-      "totalUsedGB":17.89
-    }
-  }
-]
-```
+
+{
+	"devices":[
+		{
+			"ip":"192.168.0.103",
+			"upKB":0.0,
+			"downKB":0.1,
+			"sentMsg":2241.0,
+			"sentMB":0.2,
+			"recievedMsg":5238.0,
+			"recievedMB":5.7,
+			"name":"rayanpc",
+			"mac":"14:18:77:B2:69:F4",
+			"jank":"0",
+			"leaseTime":86125.0
+		},
+		{
+			"ip":"192.168.0.109",
+			"upKB":0.0,
+			"downKB":0.0,
+			"sentMsg":5747.0,
+			"sentMB":0.3,
+			"recievedMsg":63859.0,
+			"recievedMB":90.3,
+			"name":"osmc",
+			"mac":"B8:27:EB:DF:C9:F8",
+			"jank":"0",
+			"leaseTime":85421.0
+		}
+	],
+	"metrics":{
+		"totalDownKB":29.3,
+		"totalUpKB":3.2,
+		"totalSpeed":32.5,
+		"totalSentMB":25.6,
+		"totalRecievedMB":1013.9,
+		"load":0.25,
+		"totalUsedGB":1.02
+	}
+}
