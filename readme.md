@@ -31,16 +31,16 @@ print(resp)
       "ip":"192.168.0.100",
       "upKB":0.0,
       "downKB":0.0,
-      "sentMsg":167908.0,
+      "sentMsg":168380.0,
       "sentMB":26.5,
-      "recievedMsg":334057.0,
-      "recievedMB":351.7,
+      "recievedMsg":334441.0,
+      "recievedMB":352.0,
       "name":"*.100",
       "mac":"40:B0:76:71:F0:30",
       "jank":"0",
-      "leaseTime":65236.0,
+      "leaseTime":64944.0,
       "totalSpeed":0.0,
-      "totalUsedMB":378.2
+      "totalUsedMB":378.5
     },
     {
       "ip":"192.168.0.101",
@@ -53,9 +53,9 @@ print(resp)
       "name":"M2003J15SC-RedmiNote",
       "mac":"2A:52:73:F1:FE:53",
       "jank":"0",
-      "leaseTime":78595.0,
+      "leaseTime":78303.0,
       "totalSpeed":0.0,
-      "totalUsedMB":3105.7000000000003
+      "totalUsedMB":3105.7
     },
     {
       "ip":"192.168.0.102",
@@ -68,24 +68,24 @@ print(resp)
       "name":"POCOM2Pro-POCOM2Pro",
       "mac":"E0:1F:88:23:C4:92",
       "jank":"0",
-      "leaseTime":77951.0,
+      "leaseTime":77659.0,
       "totalSpeed":0.0,
       "totalUsedMB":416.7
     },
     {
       "ip":"192.168.0.103",
-      "upKB":0.9,
-      "downKB":1.4,
-      "sentMsg":785951.0,
-      "sentMB":103.8,
-      "recievedMsg":1828217.0,
-      "recievedMB":619.1,
+      "upKB":1.4,
+      "downKB":2.1,
+      "sentMsg":791029.0,
+      "sentMB":104.3,
+      "recievedMsg":1834449.0,
+      "recievedMB":620.3,
       "name":"rayanpc",
       "mac":"14:18:77:B2:69:F4",
       "jank":"0",
-      "leaseTime":59495.0,
-      "totalSpeed":2.3,
-      "totalUsedMB":722.9
+      "leaseTime":59203.0,
+      "totalSpeed":3.5,
+      "totalUsedMB":724.6
     },
     {
       "ip":"192.168.0.105",
@@ -98,7 +98,7 @@ print(resp)
       "name":"lg",
       "mac":"90:00:4E:91:54:5D",
       "jank":"0",
-      "leaseTime":83834.0,
+      "leaseTime":83542.0,
       "totalSpeed":0.0,
       "totalUsedMB":352.0
     },
@@ -113,18 +113,18 @@ print(resp)
       "name":"osmc",
       "mac":"B8:27:EB:DF:C9:F8",
       "jank":"0",
-      "leaseTime":75189.0,
+      "leaseTime":74897.0,
       "totalSpeed":0.0,
-      "totalUsedMB":268.79999999999995
+      "totalUsedMB":268.8
     }
   ],
   "metrics":{
-    "totalDownKB":1.4,
-    "totalUpKB":0.9,
-    "totalSpeed":2.3,
-    "totalSentMB":333.9,
-    "totalRecievedMB":4910.4,
-    "load":0.02,
+    "totalDownKB":2.1,
+    "totalUpKB":1.4,
+    "totalSpeed":3.5,
+    "totalSentMB":334.4,
+    "totalRecievedMB":4911.9,
+    "load":0.03,
     "totalUsedGB":5.12
   }
 }

@@ -136,7 +136,7 @@ def getAllStatsJson():
         device["jank"] = getDeviceParamFromIp(deviceIP, "jank")
         device["leaseTime"] = getDeviceParamFromIp(deviceIP, "leaseTime")
         device["totalSpeed"] = device["upKB"] + device["downKB"]
-        device["totalUsedMB"] = device["sentMB"] + device["recievedMB"]
+        device["totalUsedMB"] = round(device["sentMB"] + device["recievedMB"], 2)
         devicesArr.append(device)
 
         totalDownKB += device["downKB"]
