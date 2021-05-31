@@ -128,7 +128,7 @@ def getAllStatsJson():
         
         _name = getDeviceParamFromIp(deviceIP, "name")
         if _name == "" or _name == None:
-            device["name"] = '*' + deviceIP[-4:]
+            device["name"] = getDeviceParamFromIp(deviceIP, "mac")
         else:
             device["name"] = _name
             
