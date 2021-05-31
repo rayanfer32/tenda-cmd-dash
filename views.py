@@ -31,7 +31,7 @@ def showAdvancedStats():
             name = device["name"]
             ip = device["ip"]
             speed = round(device["totalSpeed"] ,0)
-            used = int(device["recievedMB"] )
+            used = int(device["totalUsedMB"] )
             unitLoad = int(speed/(TOTAL_BW/MAX_BLOCKS))                
             count +=1
             print(f"{count}: {name} @{ip[-4:]} | {used} MB")
