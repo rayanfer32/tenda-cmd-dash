@@ -29,11 +29,12 @@ def showAdvancedStats():
         count = 0
         for device in stats["devices"]:
             name = device["name"]
+            ip = device["ip"]
             speed = round(device["totalSpeed"] ,0)
             used = int(device["recievedMB"] )
             unitLoad = int(speed/(TOTAL_BW/MAX_BLOCKS))                
             count +=1
-            print(f"{count}: {name} | {used} MB")
+            print(f"{count}: {name} @{ip[-4:]} | {used} MB")
             print('█'*unitLoad,f"{speed} KBps")
 
         time.sleep(WAIT_BEFORE_UPDATE)

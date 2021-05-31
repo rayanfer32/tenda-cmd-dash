@@ -2,7 +2,7 @@ import logging
 from views import showAdvancedStats
 from utils import pauseScreen
 
-logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
+logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 
 def main():
 	# showSimpleStats()

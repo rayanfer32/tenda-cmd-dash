@@ -5,6 +5,9 @@ import logging
 import requests
 from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW
 
+
+logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+
 proxies = urllib.request.getproxies()
 session = requests.Session()
 _DEVICES = []  # donot edit! used as memo internaly
@@ -96,7 +99,7 @@ def getDhcpListJson(api_path="lan_dhcp_clients.asp"):
                 "leaseTime": float(leaseTime)
             })
         except Exception as e:
-            logging.info(e)
+            logging.debug(e)
 
     return jsonResponse
 
@@ -124,8 +127,8 @@ def getAllStatsJson():
         deviceIP = device["ip"]
         
         _name = getDeviceParamFromIp(deviceIP, "name")
-        if len(_name) == 0:
-            device["name"] = deviceIP
+        if _name == "" or _name == None:
+            device["name"] = '*' + deviceIP[-4:]
         else:
             device["name"] = _name
             
@@ -133,6 +136,7 @@ def getAllStatsJson():
         device["jank"] = getDeviceParamFromIp(deviceIP, "jank")
         device["leaseTime"] = getDeviceParamFromIp(deviceIP, "leaseTime")
         device["totalSpeed"] = device["upKB"] + device["downKB"]
+        device["totalUsedMB"] = device["sentMB"] + device["recievedMB"]
         devicesArr.append(device)
 
         totalDownKB += device["downKB"]
