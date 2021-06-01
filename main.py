@@ -11,6 +11,7 @@ def main():
 			showAdvancedStats()
 	except Exception as e:
 		print(e)
+		logging.info(e)
 		pauseScreen()
 
 if __name__ == "__main__":

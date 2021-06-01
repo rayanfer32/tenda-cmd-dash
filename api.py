@@ -3,7 +3,7 @@ import urllib
 import base64
 import logging
 import requests
-from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW
+from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW, ON_WIFI
 
 
 logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
@@ -20,12 +20,24 @@ def _ask_modem_something(modem_address, modem_password, data, api_path):
     api_path = api_path.lstrip('/')
 
     ecos_pwd = base64.b64encode(modem_password.encode('utf-8')).decode()
-    cookies = {
-        # 'Authorization': f'Basic {pswd.decode()}'
-        # 'Authorization': 'Basic YWRtaW46YWRtaW4='
-        "Authorization": f"language=en; ecos_pw={ecos_pwd}mji:language=en"
-    }
 
+    if ON_WIFI:
+        cookies = {
+            # 'Authorization': f'Basic {pswd.decode()}'
+            # 'Authorization': 'Basic YWRtaW46YWRtaW4='
+            # for lan connection mji language=en; ecos_pw=YWRtaW4=5gk:language=en
+            "Authorization": f"language=en; ecos_pw={ecos_pwd}5gk:language=en"
+        }
+    else: 
+        cookies = {
+            # 'Authorization': f'Basic {pswd.decode()}'
+            # 'Authorization': 'Basic YWRtaW46YWRtaW4='
+            # for lan connection mji language=en; ecos_pw=YWRtaW4=5gk:language=en
+            
+            "Authorization": f"language=en; ecos_pw={ecos_pwd}mji:language=en"
+        }
+
+    # logging.warning(cookies)
     # f"http://{ROUTER_IP}/goform/updateIptAccount"
     # referer: http://192.168.0.1/sys_iptAccount.asp
 
@@ -38,12 +50,14 @@ def _ask_modem_something(modem_address, modem_password, data, api_path):
         r = session.post('{}/{}'.format(modem_address, api_path),
                          headers=headers, cookies=cookies, data=data)
     except:
+        logging.info("using proxy")
         r = session.post('{}/{}'.format(modem_address, api_path),
                          headers=headers, cookies=cookies, data=data, proxies=proxies)
+    # logging.debug(r.content)
     return r.content
 
 
-def _getTrafficStats(api_path, data="something"):
+def _getTrafficStats(api_path="goform/updateIptAccount", data="something"):
     resp = _ask_modem_something(ROUTER_IP, ROUTER_PASS, data, api_path)
     return resp.decode()
 
@@ -66,7 +80,7 @@ def getTrafficStatsJson(api_path="goform/updateIptAccount", data="something"):
                 "recievedMsg": float(recievedMsg),
                 "recievedMB": float(recievedMB)})
     except Exception as e:
-        logging.debug(e)
+        logging.info(e)
 
     return jsonResponse
 

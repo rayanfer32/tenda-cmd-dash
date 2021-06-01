@@ -1,6 +1,7 @@
 import api
 import json
 
+
 resp = api.getAllStatsJson()
 print(resp)
 
