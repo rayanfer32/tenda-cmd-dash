@@ -3,7 +3,7 @@ import urllib
 import base64
 import logging
 import requests
-from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW, ON_WIFI
+from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW, REQ_COOKIE
 
 
 logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
@@ -21,20 +21,21 @@ def _ask_modem_something(modem_address, modem_password, data, api_path):
 
     ecos_pwd = base64.b64encode(modem_password.encode('utf-8')).decode()
 
-    if ON_WIFI:
+    if REQ_COOKIE == None:
         cookies = {
             # 'Authorization': f'Basic {pswd.decode()}'
             # 'Authorization': 'Basic YWRtaW46YWRtaW4='
             # for lan connection mji language=en; ecos_pw=YWRtaW4=5gk:language=en
-            "Authorization": f"language=en; ecos_pw={ecos_pwd}5gk:language=en"
+            "Authorization": f"language=en; ecos_pw={ecos_pwd}mji:language=en"
         }
     else: 
+        print("using req cookie")
         cookies = {
             # 'Authorization': f'Basic {pswd.decode()}'
             # 'Authorization': 'Basic YWRtaW46YWRtaW4='
             # for lan connection mji language=en; ecos_pw=YWRtaW4=5gk:language=en
             
-            "Authorization": f"language=en; ecos_pw={ecos_pwd}mji:language=en"
+            "Authorization": REQ_COOKIE
         }
 
     # logging.warning(cookies)

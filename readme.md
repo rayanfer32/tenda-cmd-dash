@@ -3,6 +3,10 @@
 ### Cmd-line Dashboard 
 ![dash](./reference/dash.gif)
 
+
+### Finding the login cookie (incase you cannot see stats)
+![finding_cookie](./reference/finding_cookie.png)
+
 ### Run On Windows
 `run.bat`
 
@@ -14,8 +18,6 @@ TOTAL_BW = 100/8 * 1024  # KBps
 MAX_BLOCKS = 32
 WAIT_BEFORE_UPDATE = 1
 ```
-
-
 ### `Api`
 ```python
 import api
