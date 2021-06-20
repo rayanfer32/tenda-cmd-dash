@@ -13,8 +13,8 @@ def humanSpeedUnits(kbps):
     else:
         return f"{kbps} KBps"
 
-def isOnWifi():
-    resp = api._getTrafficStats()
-    if (resp.find("Wrong password") > 0):
-        return True
-    return False
+import socket
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]

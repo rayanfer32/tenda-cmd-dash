@@ -17,6 +17,7 @@ ROUTER_PASS = "admin"
 TOTAL_BW = 100/8 * 1024  # KBps
 MAX_BLOCKS = 32
 WAIT_BEFORE_UPDATE = 1
+REQ_COOKIE = None
 ```
 ### `Api`
 ```python

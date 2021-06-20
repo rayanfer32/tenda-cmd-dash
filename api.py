@@ -3,15 +3,22 @@ import urllib
 import base64
 import logging
 import requests
-from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW, REQ_COOKIE
-
+from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW, REQ_COOKIE, SALTS
+from utils import get_ip_address
 
 logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 
 proxies = urllib.request.getproxies()
 session = requests.Session()
-_DEVICES = []  # donot edit! used as memo internaly
+sub_ip = get_ip_address()[-3:]
 
+try:
+    salt = SALTS[int(sub_ip)]
+except Exception as e:
+    salt = None
+    logging.warning(e)
+
+_DEVICES = []  # donot edit! used as memo internaly
 
 def _ask_modem_something(modem_address, modem_password, data, api_path):
     if not modem_address.startswith('http'):
@@ -26,10 +33,9 @@ def _ask_modem_something(modem_address, modem_password, data, api_path):
             # 'Authorization': f'Basic {pswd.decode()}'
             # 'Authorization': 'Basic YWRtaW46YWRtaW4='
             # for lan connection mji language=en; ecos_pw=YWRtaW4=5gk:language=en
-            "Authorization": f"language=en; ecos_pw={ecos_pwd}mji:language=en"
+            "Authorization": f"language=en; ecos_pw={ecos_pwd}{salt}:language=en"
         }
     else: 
-        print("using req cookie")
         cookies = {
             # 'Authorization': f'Basic {pswd.decode()}'
             # 'Authorization': 'Basic YWRtaW46YWRtaW4='
