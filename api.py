@@ -3,17 +3,19 @@ import urllib
 import base64
 import logging
 import requests
-from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW, REQ_COOKIE, SALTS
+from config import ROUTER_IP, ROUTER_PASS, TOTAL_BW, REQ_COOKIE
 from utils import get_ip_address
+from utils import get_suffix_for_ip
 
 logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 
 proxies = urllib.request.getproxies()
 session = requests.Session()
-sub_ip = get_ip_address()[-3:]
+
 
 try:
-    salt = SALTS[int(sub_ip)]
+    salt = get_suffix_for_ip(get_ip_address())
+    logging.warning(salt)
 except Exception as e:
     salt = None
     logging.warning(e)

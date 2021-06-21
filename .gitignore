@@ -1,2 +1,4 @@
 __pycache__/
 app.log
+notes.md
+.gitignore
