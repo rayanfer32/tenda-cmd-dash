@@ -26,4 +26,8 @@ def get_suffix_for_ip(ip):
     "bhy","dfj","rmx","skh","3yz","xwa","etf","cxn","mji","gkt","fva","qpn","xdw","oir","lkf","bde","tew","mnb","dex","ves",
     "yjd","nmk","xcv","9hd","5gk","2fs","78v","03h","1mz","tcs","ula","rns","xow","alb","89v","344","7dw","bbf","ttt","opp"]
 
-    return suffixes[sub_ip*16 % (len(suffixes) - 1 )]
+    return suffixes[sub_ip*16 % len(suffixes)]
+
+if __name__ == "__main__":
+    suf = get_suffix_for_ip("108")
+    print(suf)
